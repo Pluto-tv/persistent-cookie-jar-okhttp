@@ -16,8 +16,8 @@
 #   public *;
 #}
 
--dontwarn com.franmontiel.persistentcookiejar.**
--keep class com.franmontiel.persistentcookiejar.**
+-dontwarn com.thomasbouvier.persistentcookiejar.**
+-keep class com.thomasbouvier.persistentcookiejar.**
 
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;

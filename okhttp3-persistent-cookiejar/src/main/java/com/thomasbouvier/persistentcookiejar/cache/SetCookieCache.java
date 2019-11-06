@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.franmontiel.persistentcookiejar.cache;
+package com.thomasbouvier.persistentcookiejar.cache;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import okhttp3.Cookie;
