@@ -52,6 +52,7 @@ public class PersistentCookieJar implements ClearableCookieJar {
                 persistentCookies.add(cookie);
             }
         }
+        
         return persistentCookies;
     }
 
@@ -66,7 +67,6 @@ public class PersistentCookieJar implements ClearableCookieJar {
             if (isCookieExpired(currentCookie)) {
                 cookiesToRemove.add(currentCookie);
                 it.remove();
-
             } else if (currentCookie.matches(url)) {
                 validCookies.add(currentCookie);
             }
