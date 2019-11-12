@@ -1,4 +1,4 @@
-package com.franmontiel.persistentcookiejar;
+package com.thomasbouvier.persistentcookiejar;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,7 +1,7 @@
-package com.franmontiel.persistentcookiejar;
+package com.thomasbouvier.persistentcookiejar;
 
-import com.franmontiel.persistentcookiejar.cache.CookieCache;
-import com.franmontiel.persistentcookiejar.persistence.CookiePersistor;
+import com.thomasbouvier.persistentcookiejar.cache.CookieCache;
+import com.thomasbouvier.persistentcookiejar.persistence.CookiePersistor;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

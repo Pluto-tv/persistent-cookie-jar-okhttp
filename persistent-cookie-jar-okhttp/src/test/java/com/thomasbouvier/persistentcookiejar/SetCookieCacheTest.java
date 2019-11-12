@@ -1,6 +1,6 @@
-package com.franmontiel.persistentcookiejar;
+package com.thomasbouvier.persistentcookiejar;
 
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.thomasbouvier.persistentcookiejar.cache.SetCookieCache;
 
 import org.junit.Test;
 

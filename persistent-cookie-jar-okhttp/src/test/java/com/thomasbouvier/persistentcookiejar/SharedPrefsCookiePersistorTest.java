@@ -1,7 +1,7 @@
-package com.franmontiel.persistentcookiejar;
+package com.thomasbouvier.persistentcookiejar;
 
-import com.franmontiel.persistentcookiejar.persistence.CookiePersistor;
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.thomasbouvier.persistentcookiejar.persistence.CookiePersistor;
+import com.thomasbouvier.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
 import org.junit.After;
 import org.junit.Before;

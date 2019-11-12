@@ -1,4 +1,6 @@
-# PersistentCookieJar for OkHttp 3
+# persistent-cookie-jar-okhttp for OkHttp 3
+
+[![Release](https://jitpack.io/v/thomas-bouvier/persistent-cookie-jar-okhttp.svg)](https://jitpack.io/#thomas-bouvier/persistent-cookie-jar-okhttp)
 
 A persistent CookieJar implementation for OkHttp 3 based on SharedPreferences.
 
@@ -19,7 +21,7 @@ Step 2. Add the dependency
 
 ```groovy
 dependencies {
-    implementation 'com.github.thomas-bouvier:persistent-cookie-jar:1.0.2'
+    implementation 'com.github.thomas-bouvier:persistent-cookie-jar-okhttp:1.0.2'
 }
 ```
 
