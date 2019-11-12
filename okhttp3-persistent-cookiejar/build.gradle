@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 
-group='com.github.thomasbouvier'
+group='com.github.thomas-bouvier'
 
 android {
     compileSdkVersion 26
