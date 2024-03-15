@@ -1,55 +1,106 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id("maven-publish")
+}
 
-group='com.github.thomas-bouvier'
+//apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.github.andreu-zaitsev'
 
 android {
-    compileSdkVersion 29
+    namespace "com.andreuzaitsev.persistentcookiejar"
+
+    compileSdkVersion = 34
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        consumerProguardFiles 'proguard-rules.pro'
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode = 1
+        versionName = "1.0"
+        consumerProguardFiles("proguard-rules.pro")
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     sourceSets {
-        main.java.srcDirs += 'src/main/java'
-        androidTest.java.srcDirs += 'src/androidTest/java'
-        androidTest.resources.srcDirs += 'src/androidTest/res'
+        main.java.srcDirs += "src/main/java"
+        androidTest.java.srcDirs += "src/androidTest/java"
+        androidTest.resources.srcDirs += "src/androidTest/res"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.robolectric:robolectric:4.2.1"
-    testImplementation 'org.mockito:mockito-core:2.2.0'
+    testImplementation("androidx.test:core-ktx:1.5.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.7.3")
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
 }
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
+tasks.register('sourcesJar', Jar) {
     from android.sourceSets.main.java.sourceFiles
 }
 
-task javadoc(type: Javadoc) {
+tasks.register('javadoc', Javadoc) {
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
     from javadoc.destinationDir
 }
 
-task classesJar(type: Jar) {
+tasks.register('classesJar', Jar) {
     from "$buildDir/intermediates/classes/release"
+}
+
+def myGroupId = "com.github.andreu-zaitsev"
+def myArtifactId = "persistent-cookie-jar-okhttp"
+def myVersion = "1.0.0"
+// com.github.andreu-zaitsev:persistent-cookie-jar:1.0.0
+def myLocalRepo = "ZaitsevLocalRepo"
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = myGroupId
+            artifactId = myArtifactId
+            version = myVersion
+            afterEvaluate { from components.release }
+        }
+    }
+    repositories {
+        maven {
+            name = myLocalRepo
+            url = "${project.buildDir}/repo"
+        }
+    }
+}
+
+tasks.register('generateRepo', Zip) {
+    def publishTask = tasks.named('publishReleasePublicationTo${myLocalRepo}Repository')
+    from publishTask.map { it.getRepository().getUrl() }
+    into myArtifactId
+    archiveFileName.set("${myArtifactId}.zip")
 }

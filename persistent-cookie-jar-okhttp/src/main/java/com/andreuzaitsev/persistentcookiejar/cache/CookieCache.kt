@@ -13,38 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.andreuzaitsev.persistentcookiejar.cache
 
-package com.thomasbouvier.persistentcookiejar.persistence;
-
-import java.util.Collection;
-import java.util.List;
-
-import okhttp3.Cookie;
+import okhttp3.Cookie
 
 /**
- * A CookiePersistor handles the persistent cookie storage.
+ * A CookieCache handles the volatile cookie session storage.
  */
-public interface CookiePersistor {
-
-    List<Cookie> loadAll();
+interface CookieCache {
 
     /**
-     * Persist all cookies, existing cookies will be overwritten.
+     * Add all the new cookies to the session, existing cookies will be overwritten.
      *
-     * @param cookies cookies persist
+     * @param cookies
      */
-    void saveAll(Collection<Cookie> cookies);
+    fun addAll(cookies: Collection<Cookie>)
 
     /**
-     * Removes indicated cookies from persistence.
-     *
-     * @param cookies cookies to remove from persistence
+     * Clear all the cookies from the session.
      */
-    void removeAll(Collection<Cookie> cookies);
+    fun clear()
 
     /**
-     * Clear all cookies from persistence.
+     * Returns mutable iterator over cached cookies.
      */
-    void clear();
-
+    fun iterator(): MutableIterator<Cookie>
 }

@@ -13,23 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.andreuzaitsev.persistentcookiejar
 
-package com.thomasbouvier.persistentcookiejar;
-
-import okhttp3.CookieJar;
+import okhttp3.CookieJar
 
 /**
- * This interface extends {@link okhttp3.CookieJar} and adds methods to clear the cookies.
+ * This interface extends [CookieJar] and adds methods to clear the cookies.
  */
-public interface ClearableCookieJar extends CookieJar {
+interface CoroutineClearableCookieJar : CookieJar {
 
     /**
      * Clear all the session cookies while maintaining the persisted ones.
      */
-    void clearSession();
+    suspend fun clearSession()
 
     /**
      * Clear all the cookies from persistence and from the cache.
      */
-    void clear();
+    suspend fun clear()
+}
+
+/**
+ * This interface extends [CookieJar] and adds methods to clear the cookies.
+ */
+interface ClearableCookieJar : CookieJar {
+
+    /**
+     * Clear all the session cookies while maintaining the persisted ones.
+     */
+    fun clearSession()
+
+    /**
+     * Clear all the cookies from persistence and from the cache.
+     */
+    fun clear()
 }
