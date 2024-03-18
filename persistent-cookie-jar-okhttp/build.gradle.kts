@@ -1,8 +1,11 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    //id("maven-publish")
+    `maven-publish`
 }
+
+group = "tv.pluto.ads"
+version = "1.0.0-alpha01-2024.03.18"
 
 android {
     namespace = "com.andreuzaitsev.persistentcookiejar"
@@ -13,7 +16,6 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-        //consumerProguardFiles("consumer-rules.pro")
     }
     buildTypes {
         release {
@@ -27,6 +29,46 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+}
+
+afterEvaluate {
+    publishing {
+        // These values are provided by the CI environment, args are retrieved from the command line.
+        val nexusURL: String? by project
+        val nexusUserName: String? by project
+        val nexusUserPassword: String? by project
+        repositories {
+            maven {
+                url = uri(nexusURL ?: "")
+                credentials {
+                    username = nexusUserName
+                    password = nexusUserPassword
+                }
+            }
+        }
+        publications {
+            publications.withType<MavenPublication> {
+            // Provide artifacts information requited by Maven Central
+                pom {
+                    name.set("persistent-cookie-jar-okhttp Library")
+                    description.set(
+                        "Custom version of persistent-cookie-jar-okhttp Library"
+                    )
+                    url.set("https://github.com/Pluto-tv/persistent-cookie-jar-okhttp")
+
+                    developers {
+                        developer {
+                            id.set("Pluto TV")
+                            name.set("Android Team (MH)")
+                        }
+                    }
+                    scm {
+                        url.set("https://github.com/Pluto-tv/persistent-cookie-jar-okhttp")
+                    }
+                }
+            }
+        }
     }
 }
 
