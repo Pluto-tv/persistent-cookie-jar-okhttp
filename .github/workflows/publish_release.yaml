@@ -6,8 +6,9 @@ on:
     tags:
       - 'v**'
 env:
-  nexusUserName: ${{ secrets.NEXUS_USERID }}
-  nexusUserPassword: ${{ secrets.NEXUS_PASSWORD }}
+  NEXUS_URL: ${{ secrets.NEXUS_URL }}
+  NEXUS_USERID: ${{ secrets.NEXUS_USERID }}
+  NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
 jobs:
   build:
@@ -20,4 +21,4 @@ jobs:
         run: ./gradlew persistent-cookie-jar-okhttp:test
 
       - name: Publish Library
-        run: ./gradlew -PnexusUserName=$nexusUserName -PnexusUserPassword=$nexusUserPassword clean persistent-cookie-jar-okhttp:assembleRelease publish
+        run: ./gradlew -PnexusUserName=$NEXUS_USERID -PnexusUserPassword=$NEXUS_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish

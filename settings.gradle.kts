@@ -1,7 +1,11 @@
 pluginManagement {
 
     java.util.Properties().apply {
-        File("${settingsDir.parent}/persistent-cookie-jar-okhttp/local.properties").reader().use { load(it) }
+        try {
+            File("${settingsDir.parent}/gradle.properties").reader().use { load(it) }
+        } catch (error: Exception) {
+            //do Nothing
+        }
     }.also {
         val nexusURL: String = System.getenv("NEXUS_URL") ?: it.getProperty("NEXUS_URL")
         val nexusUsername: String = System.getenv("NEXUS_USERID") ?: it.getProperty("NEXUS_USERID")
