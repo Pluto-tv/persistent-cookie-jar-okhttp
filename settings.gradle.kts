@@ -40,5 +40,5 @@ dependencyResolutionManagement {
 }
 
 
-rootProject.name = "persistent-cookie-jar-okhttpn"
+rootProject.name = "persistent-cookie-jar-okhttp"
 include(":persistent-cookie-jar-okhttp")
