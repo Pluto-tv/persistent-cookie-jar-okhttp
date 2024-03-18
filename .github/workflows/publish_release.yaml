@@ -5,6 +5,8 @@ on:
   push:
     tags:
       - 'v**'
+    branches:
+     - 'datastore-kotlin-impl'
 env:
   NEXUS_URL: ${{ secrets.NEXUS_URL }}
   NEXUS_USERID: ${{ secrets.NEXUS_USERID }}

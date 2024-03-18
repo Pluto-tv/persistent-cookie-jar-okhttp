@@ -6,9 +6,6 @@ on:
   pull_request:
     branches:
       - 'master'
-  push:
-   branches:
-     - 'datastore-kotlin-impl'
 
 env:
   NEXUS_URL: ${{ secrets.NEXUS_URL }}
