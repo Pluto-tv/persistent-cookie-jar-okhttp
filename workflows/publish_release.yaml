@@ -1,0 +1,23 @@
+---
+name: Publish persistent-cookie-jar-okhttp Library
+
+on:
+  push:
+    tags:
+      - 'v**'
+env:
+  nexusUserName: ${{ secrets.NEXUS_USERID }}
+  nexusUserPassword: ${{ secrets.NEXUS_PASSWORD }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/config-action
+
+      - name: Run Unit Tests
+        run: ./gradlew persistent-cookie-jar-okhttp:test
+
+      - name: Publish Library
+        run: ./gradlew -PnexusUserName=$nexusUserName -PnexusUserPassword=$nexusUserPassword clean persistent-cookie-jar-okhttp:assembleRelease publish
