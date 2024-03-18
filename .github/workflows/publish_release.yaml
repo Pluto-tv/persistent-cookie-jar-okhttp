@@ -23,4 +23,4 @@ jobs:
         run: ./gradlew persistent-cookie-jar-okhttp:test
 
       - name: Publish Library
-        run: ./gradlew -PnexusUserName=$NEXUS_USERID -PnexusUserPassword=$NEXUS_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish
+        run: ./gradlew  --stacktrace -PnexusUserName=$NEXUS_USERID -PnexusUserPassword=$NEXUS_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish
