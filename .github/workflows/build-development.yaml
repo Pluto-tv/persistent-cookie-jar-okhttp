@@ -6,12 +6,15 @@ on:
   pull_request:
     branches:
       - 'master'
+  push:
+   branches:
+     - 'datastore-kotlin-impl'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/config-action
 
       - name: Run Unit Tests
