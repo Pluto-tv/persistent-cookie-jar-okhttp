@@ -1,10 +1,10 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    id("com.android.library")
     alias(libs.plugins.jetbrainsKotlinAndroid)
     `maven-publish`
 }
 
-group = "tv.pluto.ads"
+group = "com.andreuzaitsev.persistentcookiejar"
 version = "1.0.0-alpha01-2024.03.18"
 
 android {
@@ -13,9 +13,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
     }
     buildTypes {
         release {
