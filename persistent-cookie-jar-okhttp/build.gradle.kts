@@ -50,15 +50,15 @@ afterEvaluate {
     publishing {
         // These values are provided by the CI environment, args are retrieved from the command line.
         val repoPublishURL: String? by project
-        val repoUserName: String? by project
-        val repoUserPassword: String? by project
+        val repoPublishUsername: String? by project
+        val repoPublishPassword: String? by project
         
         repositories {
             maven {
                 url = uri(repoPublishURL ?: "")
                 credentials {
-                    username = repoUserName
-                    password = repoUserPassword
+                    username = repoPublishUsername
+                    password = repoPublishPassword
                 }
             }
         }

@@ -9,9 +9,11 @@ on:
      - 'datastore-kotlin-impl'
 env:
   REPO_ARTIFACTS_URL: ${{ secrets.REPO_ARTIFACTS_URL }}
-  REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
   REPO_USERID: ${{ secrets.REPO_USERID }}
   REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
+  REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
+  REPO_PUBLISH_USERID: ${{ secrets.REPO_PUBLISH_USERID }}
+  REPO_PUBLISH_PW: ${{ secrets.REPO_PUBLISH_PW }}
 
 jobs:
   build:
@@ -24,4 +26,4 @@ jobs:
         run: ./gradlew persistent-cookie-jar-okhttp:test
 
       - name: Publish Library
-        run: ./gradlew  --stacktrace -PrepoPublishURL=$REPO_PUBLISH_URL -PrepoUserName=$REPO_USERID -PrepoUserPassword=$REPO_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish
+        run: ./gradlew  --stacktrace -PrepoPublishURL=$REPO_PUBLISH_URL -PrepoUserName=$REPO_PUBLISH_USERID -PrepoUserPassword=$REPO_PUBLISH_PW clean persistent-cookie-jar-okhttp:assembleRelease publish
