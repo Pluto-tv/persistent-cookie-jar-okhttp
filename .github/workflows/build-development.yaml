@@ -7,11 +7,6 @@ on:
     branches:
       - 'master'
 
-env:
-  REPO_ARTIFACTS_URL: ${{ secrets.REPO_ARTIFACTS_URL }}
-  REPO_USERID: ${{ secrets.REPO_USERID }}
-  REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
