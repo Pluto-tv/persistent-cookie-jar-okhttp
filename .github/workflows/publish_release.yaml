@@ -5,8 +5,6 @@ on:
   push:
     tags:
       - 'v**'
-    branches:
-     - 'datastore-kotlin-impl'
 env:
   REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
   REPO_PUBLISH_USERID: ${{ secrets.REPO_PUBLISH_USERID }}
