@@ -2,7 +2,7 @@
 # By default, the flags in this file are appended to flags specified
 # in /opt/android/sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
+# directive in build.gradle.kts.
 #
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
@@ -16,8 +16,8 @@
 #   public *;
 #}
 
--dontwarn com.thomasbouvier.persistentcookiejar.**
--keep class com.thomasbouvier.persistentcookiejar.**
+-dontwarn com.andreuzaitsev.persistentcookiejar.**
+-keep class com.andreuzaitsev.persistentcookiejar.**
 
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;

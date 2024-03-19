@@ -1,0 +1,24 @@
+---
+name: Publish persistent-cookie-jar-okhttp Library
+
+on:
+  push:
+    tags:
+      - 'v**'
+env:
+  REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
+  REPO_PUBLISH_USERID: ${{ secrets.REPO_PUBLISH_USERID }}
+  REPO_PUBLISH_PW: ${{ secrets.REPO_PUBLISH_PW }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/config-action
+
+      - name: Run Unit Tests
+        run: ./gradlew persistent-cookie-jar-okhttp:test
+
+      - name: Publish Library
+        run: ./gradlew  --stacktrace -PrepoPublishURL=$REPO_PUBLISH_URL -PrepoPublishUsername=$REPO_PUBLISH_USERID -PrepoPublishPassword=$REPO_PUBLISH_PW clean persistent-cookie-jar-okhttp:assembleRelease publish
