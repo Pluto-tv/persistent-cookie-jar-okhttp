@@ -49,15 +49,16 @@ dependencies {
 afterEvaluate {
     publishing {
         // These values are provided by the CI environment, args are retrieved from the command line.
-        val nexusURL: String? by project
-        val nexusUserName: String? by project
-        val nexusUserPassword: String? by project
+        val repoPublishURL: String? by project
+        val repoUserName: String? by project
+        val repoUserPassword: String? by project
+        
         repositories {
             maven {
-                url = uri(nexusURL ?: "")
+                url = uri(repoPublishURL ?: "")
                 credentials {
-                    username = nexusUserName
-                    password = nexusUserPassword
+                    username = repoUserName
+                    password = repoUserPassword
                 }
             }
         }

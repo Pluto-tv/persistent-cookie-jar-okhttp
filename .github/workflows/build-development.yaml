@@ -8,9 +8,9 @@ on:
       - 'master'
 
 env:
-  NEXUS_URL: ${{ secrets.NEXUS_URL }}
-  NEXUS_USERID: ${{ secrets.NEXUS_USERID }}
-  NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+  REPO_ARTIFACTS_URL: ${{ secrets.REPO_ARTIFACTS_URL }}
+  REPO_USERID: ${{ secrets.REPO_USERID }}
+  REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
 
 jobs:
   build:

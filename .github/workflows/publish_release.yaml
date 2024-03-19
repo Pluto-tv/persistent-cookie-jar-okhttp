@@ -8,9 +8,10 @@ on:
     branches:
      - 'datastore-kotlin-impl'
 env:
-  NEXUS_URL: ${{ secrets.NEXUS_URL }}
-  NEXUS_USERID: ${{ secrets.NEXUS_USERID }}
-  NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+  REPO_ARTIFACTS_URL: ${{ secrets.REPO_ARTIFACTS_URL }}
+  REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
+  REPO_USERID: ${{ secrets.REPO_USERID }}
+  REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
 
 jobs:
   build:
@@ -23,4 +24,4 @@ jobs:
         run: ./gradlew persistent-cookie-jar-okhttp:test
 
       - name: Publish Library
-        run: ./gradlew  --stacktrace -PnexusURL=$NEXUS_URL -PnexusUserName=$NEXUS_USERID -PnexusUserPassword=$NEXUS_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish
+        run: ./gradlew  --stacktrace -PrepoPublishURL=$REPO_PUBLISH_URL -PrepoUserName=$REPO_USERID -PrepoUserPassword=$REPO_PASSWORD clean persistent-cookie-jar-okhttp:assembleRelease publish
