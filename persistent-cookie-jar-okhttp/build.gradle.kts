@@ -62,7 +62,7 @@ afterEvaluate {
             }
         }
         publications {
-            publications.withType<MavenPublication> {
+            publications.register<MavenPublication>("release") {
             // Provide artifacts information requited by Maven Central
                 pom {
                     name.set("Custom persistent-cookie-jar-okhttp Library")
