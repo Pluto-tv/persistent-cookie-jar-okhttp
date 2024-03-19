@@ -1,6 +1,4 @@
-buildscript {
-    dependencies {
-        classpath(libs.plugins.androidAgp)
-        classpath(libs.plugins.kotlinGradle)
-    }
+plugins {
+    alias(libs.plugins.androidLib) apply false
+    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 }

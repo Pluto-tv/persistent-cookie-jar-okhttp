@@ -2,7 +2,7 @@ pluginManagement {
 
     java.util.Properties().apply {
         try {
-            File("${settingsDir.parent}/gradle.properties").reader().use { load(it) }
+            File("gradle.properties").reader().use { load(it) }
         } catch (error: Exception) {
             //do Nothing
         }

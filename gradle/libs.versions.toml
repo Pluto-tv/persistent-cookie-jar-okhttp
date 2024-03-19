@@ -32,6 +32,5 @@ kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLib = { id = "com.android.library", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-androidAgp = { id = "com.android.tools.build:gradle", version.ref = "agp" }
-kotlinGradle = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
