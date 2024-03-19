@@ -4,8 +4,8 @@ plugins {
     `maven-publish`
 }
 
-group = "com.andreuzaitsev.persistentcookiejar"
-version = "1.0.0-alpha01-2024.03.18"
+group = "tv.pluto.android.libs"
+version = "1.0.2-alpha01-2024.03.18"
 
 android {
     namespace = "com.andreuzaitsev.persistentcookiejar"
@@ -29,6 +29,23 @@ android {
     }
 }
 
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.material)
+    implementation(libs.okhttp)
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.core.ktx)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
+
 afterEvaluate {
     publishing {
         // These values are provided by the CI environment, args are retrieved from the command line.
@@ -48,7 +65,7 @@ afterEvaluate {
             publications.withType<MavenPublication> {
             // Provide artifacts information requited by Maven Central
                 pom {
-                    name.set("persistent-cookie-jar-okhttp Library")
+                    name.set("Custom persistent-cookie-jar-okhttp Library")
                     description.set(
                         "Custom version of persistent-cookie-jar-okhttp Library"
                     )
@@ -67,20 +84,4 @@ afterEvaluate {
             }
         }
     }
-}
-
-dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.datastore.preferences)
-    implementation(libs.material)
-    implementation(libs.okhttp)
-    testImplementation(libs.mockito)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.robolectric)
-    testImplementation(libs.junit)
-    testImplementation(libs.androidx.test.core.ktx)
-    testImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
