@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 plugins {
     alias(libs.plugins.androidLib)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -64,6 +66,13 @@ afterEvaluate {
         }
         publications {
             publications.register<MavenPublication>("release") {
+                val bundleReleaseAar = tasks.named("bundleReleaseAar")
+                val publishReleasePublicationToMavenRepository = tasks.named("publishReleasePublicationToMavenRepository")
+                print("Carlos")
+                print(bundleReleaseAar)
+                publishReleasePublicationToMavenRepository.dependsOn(bundleReleaseAar)
+
+                artifact("$buildDir/outputs/aar/persistent-cookie-jar-okhttp-release.aar")
             // Provide artifacts information requited by Maven Central
                 pom {
                     name.set("Custom persistent-cookie-jar-okhttp Library")
