@@ -1,6 +1,3 @@
-<manifest
-    package="com.andreuzaitsev.persistentcookiejar">
-
+<manifest>
     <application/>
-
 </manifest>

@@ -6,15 +6,15 @@ on:
     tags:
       - 'v**'
 env:
-  REPO_PUBLISH_URL: ${{ secrets.REPO_PUBLISH_URL }}
-  REPO_PUBLISH_USERID: ${{ secrets.REPO_PUBLISH_USERID }}
-  REPO_PUBLISH_PW: ${{ secrets.REPO_PUBLISH_PW }}
+  REPO_PUBLISH_URL: ${{ secrets.PARAMOUNT_NEXUS_RELEASE_URL }}
+  REPO_PUBLISH_USERID: ${{ secrets.PARAMOUNT_NEXUS_USER }}
+  REPO_PUBLISH_PW: ${{ secrets.PARAMOUNT_NEXUS_PW }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/config-action
 
       - name: Run Unit Tests

@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "tv.pluto.android.libs"
-version = "1.0.2-beta02-2024.03.19"
+version = "1.0.3-2025.10.23"
 
 android {
     namespace = "com.andreuzaitsev.persistentcookiejar"
